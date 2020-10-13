@@ -1,0 +1,39 @@
+---
+title: "case_study_10132020"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(patchwork)
+library(p8105.datasets)
+knitr::opts_chunk$set(
+	fig.width = 6, 
+  fig.asp = .6,
+  out.width = "90%"
+)
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
+options(
+  ggplot2.continuous.colour = "viridis",
+  ggplot2.continuous.fill = "viridis" 
+)
+scale_colour_discrete = scale_colour_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
+```
+
+```{r}
+data("nyc_airbnb")
+```
+Some question: 
+## best rated in staten island less than $100
+```{r}
+best_in_si = 
+  nyc_airbnb %>% 
+  group_by(neighbourhood) %>% 
+  count(neighbourhood)
+  group_by (neighbourhood) %>% 
+  filter(price < 100, ) %>% 
+  summarise(reviews_per_month)
+
+```
+#"coord_flip" in ggplot: flip x aes and y aes
